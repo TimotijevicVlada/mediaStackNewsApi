@@ -1,12 +1,12 @@
 import React from "react";
 
-const News = ({ dataApi }) => {
+const News = ({ displayItems }) => {
 
 
 
   return(
       <div className="news_container">
-          {dataApi.map(item => (
+          {displayItems.map(item => (
               <div className="news_item" key={item.url}>
                   <h2 className="news_title">{item.title}</h2>
                   <h4 className="news_author">{item.author}</h4>

@@ -13,4 +13,33 @@
 .App .news_container .news_item img {
   width: 150px;
 }
+
+.App .paginationContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+}
+
+.App .paginationContainer a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid lightseagreen;
+  cursor: pointer;
+  color: lightseagreen;
+}
+
+.App .paginationContainer a:hover {
+  color: white;
+  background-color: lightseagreen;
+}
+
+.App .paginationContainer .paginationActive a {
+  color: white;
+  background-color: lightseagreen;
+}
 /*# sourceMappingURL=App.css.map */
