@@ -1,0 +1,16 @@
+.App {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App .news_container {
+  margin: 0px 100px;
+}
+
+.App .news_container .news_item {
+  border: 1px solid black;
+}
+
+.App .news_container .news_item img {
+  width: 150px;
+}
+/*# sourceMappingURL=App.css.map */
