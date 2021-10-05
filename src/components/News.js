@@ -1,8 +1,9 @@
 import React from "react";
 
 const News = ({ displayItems }) => {
-  //2021-07-15T11:59:36+00:00
+  
 
+  //Function to format date 
   const updateTime = (string) => {
     const myTime = string.split("+")[0].replace("T", " ");
     return myTime;

@@ -45,7 +45,7 @@ function App() {
     }
   };
 
-  //Solved problem with error (missing dependencies)
+  //Solved problem with warnings (missing dependencies)
   dataFetching.current = fetchData;
 
   useEffect(() => {
