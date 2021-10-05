@@ -2,12 +2,167 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.App .header {
+  -webkit-box-shadow: 0px 5px 17px -5px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 5px 17px -5px rgba(0, 0, 0, 0.75);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App .header .header_logo h1 span {
+  color: lightseagreen;
+}
+
+.App .header .header_languages {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App .header .header_languages .categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 50px;
+}
+
+.App .header .header_languages .categories span {
+  font-size: 20px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.App .header .header_languages .categories span:hover {
+  color: lightseagreen;
+  text-decoration: underline;
+}
+
+.App .header .header_languages .categories input {
+  margin-left: 30px;
+  font-size: 17px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.App .header .header_languages .categories input::-webkit-input-placeholder {
+  font-size: 17px;
+}
+
+.App .header .header_languages .categories input:-ms-input-placeholder {
+  font-size: 17px;
+}
+
+.App .header .header_languages .categories input::-ms-input-placeholder {
+  font-size: 17px;
+}
+
+.App .header .header_languages .categories input::placeholder {
+  font-size: 17px;
+}
+
+.App .header .header_languages .categories input:focus {
+  outline: none;
+  border: 1px solid lightseagreen;
+}
+
+.App .header .header_languages .languages button {
+  color: lightseagreen;
+  border: 1px solid lightseagreen;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.App .header .header_languages .languages button:hover {
+  background-color: lightseagreen;
+  color: white;
+}
+
+.App .loading {
+  text-align: center;
+  margin: 40px;
+}
+
 .App .news_container {
-  margin: 0px 100px;
+  margin: 50px 100px;
 }
 
 .App .news_container .news_item {
-  border: 1px solid black;
+  border: 1px solid lightseagreen;
+  border-radius: 7px;
+  padding: 20px;
+  margin: 5px 0px;
+}
+
+.App .news_container .news_item .news_title h2 {
+  text-align: center;
+}
+
+.App .news_container .news_item .news_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.App .news_container .news_item .news_info .news_image {
+  width: 25%;
+}
+
+.App .news_container .news_item .news_info .news_image img {
+  width: 90%;
+}
+
+.App .news_container .news_item .news_info .news_text_info {
+  width: 75%;
+  padding-left: 30px;
+}
+
+.App .news_container .news_item .news_info .news_text_info .news_desc {
+  text-indent: 20px;
+}
+
+.App .news_container .news_item .news_info .news_text_info .original_info_link a {
+  text-align: right;
+}
+
+.App .news_container .news_item .news_info .news_text_info .author_and_time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.App .news_container .news_item .news_info .news_text_info .author_and_time h4 {
+  font-weight: 200;
+  text-align: right;
+}
+
+.App .news_container .news_item .news_info .news_text_info .author_and_time span {
+  text-align: right;
+  color: gray;
 }
 
 .App .news_container .news_item img {
@@ -22,6 +177,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   list-style-type: none;
+  margin-bottom: 50px;
 }
 
 .App .paginationContainer a {
@@ -41,5 +197,26 @@
 .App .paginationContainer .paginationActive a {
   color: white;
   background-color: lightseagreen;
+}
+
+.App .footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+  -webkit-box-shadow: 0px -5px 17px -5px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px -5px 17px -5px rgba(0, 0, 0, 0.75);
+}
+
+.App .footer .content {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.App .footer .content .colored {
+  color: lightseagreen;
 }
 /*# sourceMappingURL=App.css.map */

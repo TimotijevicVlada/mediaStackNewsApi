@@ -1,15 +1,24 @@
-import {useState, useEffect} from 'react';
-import './styles/App.css';
-import News from './components/News';
-import ReactPaginate from 'react-paginate';
+import { useState, useEffect, useRef } from "react";
+import "./styles/App.css";
+import News from "./components/News";
+import ReactPaginate from "react-paginate";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
+  //Api key for fetching
+  const API_KEY = "3abdddbc82fec8cae46f950a4757b120";
 
-  const API_KEY = '2a5eb2140068f4c3c6e869bcb7961cc9';
-
+  //States
   const [dataApi, setDataApi] = useState([]);
-  const [language, setLanguage] = useState('en');
+  const [isLoading, setIsLoading] = useState(true);
+  const [language, setLanguage] = useState('en,-de');
+  const [categories, setCategories] = useState('technology,-sports');
+  const [keyword, setKeyword] = useState('');
 
+  //Ref
+  const dataFetching = useRef();
+  
 
   //Pagination
   const [pageNumber, setPageNumber] = useState(0);
@@ -17,29 +26,46 @@ function App() {
   const pagesVisited = pageNumber * itemsPerPage;
   const displayItems = dataApi.slice(pagesVisited, pagesVisited + itemsPerPage);
   const pageCount = Math.ceil(dataApi.length / itemsPerPage);
-  const changePage = ({selected}) => {
+  const changePage = ({ selected }) => {
     setPageNumber(selected);
-  }
+  };
 
-
+  //Fetching Api data
   const fetchData = async () => {
-    const response = await fetch(`http://api.mediastack.com/v1/news?access_key=${API_KEY}&sources=sports&languages=${language}`);
-    const data = await response.json();
-    console.log(data);
-    setDataApi(data.data);
-  }
+    try {
+      const response = await fetch(
+        `http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=${categories}&languages=${language}&keywords=${keyword}`
+      );
+      const data = await response.json();
+      console.log(data);
+      setIsLoading(false);
+      setDataApi(data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  //Solved problem with error (missing dependencies)
+  dataFetching.current = fetchData;
 
   useEffect(() => {
-    fetchData();
-  }, [])
+    dataFetching.current();
+  }, [language, categories, keyword]);
 
   return (
     <div className="App">
-      <div>
-        <h1>Hello media stack</h1>
-      </div>
-      <News displayItems={displayItems}/>
-      <ReactPaginate 
+      <Header
+        setLanguage={setLanguage}
+        language={language}
+        setCategories={setCategories}
+        setKeyword={setKeyword}
+      />
+      {isLoading ? (
+        <h1 className="loading">Loading...</h1>
+      ) : (
+        <News displayItems={displayItems} />
+      )}
+      <ReactPaginate
         previousLabel={"Prev"}
         nextLabel={"Next"}
         pageCount={pageCount}
@@ -50,6 +76,7 @@ function App() {
         disabledClassName={"paginationDisabled"}
         activeClassName={"paginationActive"}
       />
+      <Footer />
     </div>
   );
 }
