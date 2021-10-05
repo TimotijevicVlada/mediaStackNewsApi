@@ -1,13 +1,80 @@
 
-
-
-
 .App {
     font-family: Arial, Helvetica, sans-serif;
+    .header {
+        box-shadow: 0px 5px 17px -5px rgba(0,0,0,0.75);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .header_logo {
+            h1 {
+                span {
+                    color: lightseagreen;
+                }
+            }
+        }
+        .header_languages {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .categories {
+                display: flex;
+                align-items: center;
+                margin-left: 50px;
+                span {
+                    font-size: 20px;
+                    padding: 10px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    &:hover {
+                        color: lightseagreen;
+                        text-decoration: underline;
+                    }
+                }
+                input {
+                    margin-left: 30px;
+                    font-size: 17px;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: 1px solid gray;
+                    &::placeholder {
+                        font-size: 17px;
+                    }
+                    &:focus {
+                        outline: none;
+                        border: 1px solid lightseagreen;
+                    }
+                }
+            }
+            .languages {
+                button {
+                color: lightseagreen;
+                border: 1px solid lightseagreen;
+                border-radius: 5px;
+                background-color: white;
+                padding: 10px;
+                cursor: pointer;
+                &:hover {
+                    background-color: lightseagreen;
+                    color: white;
+                }
+            }
+            }
+            
+        }
+    }
+    .loading {
+        text-align: center;
+        margin: 40px;
+    }
     .news_container {
-        margin: 0px 100px;
+        margin: 50px 100px;
         .news_item {
-            border: 1px solid black;
+            border: 1px solid lightseagreen;
+            border-radius: 7px;
+            padding: 20px;
+            margin: 5px 0px;
             img {
                 width: 150px;
             }
@@ -17,6 +84,7 @@
         display: flex;
         justify-content: center;
         list-style-type: none;
+        margin-bottom: 50px;
         a {
             padding: 10px;
             margin: 8px;
@@ -33,6 +101,19 @@
             a {
                 color: white;
                 background-color: lightseagreen;
+            }
+        }
+    }
+    .footer {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        box-shadow: 0px -5px 17px -5px rgba(0,0,0,0.75);
+        .content {
+            font-size: 22px;
+            font-weight: bold;
+            .colored {
+                color: lightseagreen;
             }
         }
     }
