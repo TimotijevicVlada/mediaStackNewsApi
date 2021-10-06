@@ -39,7 +39,7 @@ function App() {
       const data = await response.json();
       console.log(data);
       setIsLoading(false);
-      setDataApi(data.data);
+      setDataApi(data.data.sort((a, b) => a.published_at < b.published_at ? 1 : -1));
     } catch (err) {
       console.log(err);
     }
@@ -52,6 +52,16 @@ function App() {
     dataFetching.current();
   }, [language, categories, keyword]);
 
+
+  const sortNews = (item) => {
+    console.log(item)
+    if(item === "ASC") {
+      setDataApi(dataApi.sort((a, b) => a.published_at > b.published_at ? 1 : -1));
+    } else {
+      setDataApi(dataApi.sort((a, b) => a.published_at < b.published_at ? 1 : -1));
+    }
+  }
+
   return (
     <div className="App">
       <Header
@@ -59,6 +69,7 @@ function App() {
         language={language}
         setCategories={setCategories}
         setKeyword={setKeyword}
+        sortNews={sortNews}
       />
       {isLoading ? (
         <h1 className="loading">Loading...</h1>
