@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./styles/App.css";
 import News from "./components/News";
 import ReactPaginate from "react-paginate";
@@ -15,9 +15,8 @@ function App() {
   const [language, setLanguage] = useState('en,-de');
   const [categories, setCategories] = useState('technology,-sports');
   const [keyword, setKeyword] = useState('');
+  const [sortOrder, setSortOrder] = useState("DESC");
 
-  //Ref
-  const dataFetching = useRef();
   
 
   //Pagination
@@ -31,38 +30,44 @@ function App() {
   };
 
   //Fetching Api data
-  const fetchData = async () => {
+  const fetchData = useCallback( async () => {
     try {
       const response = await fetch(
         `http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=${categories}&languages=${language}&keywords=${keyword}`
       );
       const data = await response.json();
-      console.log(data);
+
       setIsLoading(false);
-      setDataApi(data.data.sort((a, b) => a.published_at < b.published_at ? 1 : -1));
+
+      if(sortOrder === "DESC") {
+        setDataApi(data.data.sort((a, b) => new Date(b.published_at) - new Date(a.published_at)));
+      } else {
+        setDataApi(data.data.sort((a, b) => new Date(a.published_at) - new Date(b.published_at)));
+      }
+      
+      
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [language, categories, keyword, sortOrder]);
 
-  //Solved problem with warnings (missing dependencies)
-  dataFetching.current = fetchData;
+  
 
   useEffect(() => {
-    dataFetching.current();
-  }, [language, categories, keyword]);
+    fetchData();
+  }, [fetchData]);
 
 
   const sortNews = (item) => {
-    console.log(item)
     if(item === "ASC") {
-      setDataApi(dataApi.sort((a, b) => a.published_at > b.published_at ? 1 : -1));
+      setDataApi(dataApi.sort((a, b) => new Date(a.published_at) - new Date(b.published_at)))
     } else {
-      setDataApi(dataApi.sort((a, b) => a.published_at < b.published_at ? 1 : -1));
+      setDataApi(dataApi.sort((a, b) => new Date(b.published_at) - new Date(a.published_at)))
     }
   }
 
   return (
+
     <div className="App">
       <Header
         setLanguage={setLanguage}
@@ -70,6 +75,7 @@ function App() {
         setCategories={setCategories}
         setKeyword={setKeyword}
         sortNews={sortNews}
+        setSortOrder={setSortOrder}
       />
       {isLoading ? (
         <h1 className="loading">Loading...</h1>
