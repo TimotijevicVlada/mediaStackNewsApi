@@ -1,6 +1,6 @@
 import React from "react";
 
-const Categories = ({ setCategories, setKeyword, sortNews, setSortOrder }) => {
+const Categories = ({ setCategories, setKeyword, setSortOrder }) => {
 
 
   return (

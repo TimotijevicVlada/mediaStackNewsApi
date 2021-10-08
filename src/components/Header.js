@@ -2,7 +2,7 @@ import React from "react";
 import Categories from "./Categories";
 import Languages from "./Languages";
 
-const Header = ({ language, setLanguage, setCategories, setKeyword, sortNews, setSortOrder }) => {
+const Header = ({ language, setLanguage, setCategories, setKeyword, setSortOrder }) => {
   return (
     <div className="header">
       <div className="header_logo">
@@ -11,7 +11,7 @@ const Header = ({ language, setLanguage, setCategories, setKeyword, sortNews, se
         </h1>
       </div>
       <div className="header_languages">
-        <Categories setCategories={setCategories} setKeyword={setKeyword} sortNews={sortNews} setSortOrder={setSortOrder}/>
+        <Categories setCategories={setCategories} setKeyword={setKeyword} setSortOrder={setSortOrder}/>
         <Languages language={language} setLanguage={setLanguage}/>
       </div>
     </div>

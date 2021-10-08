@@ -58,14 +58,6 @@ function App() {
   }, [fetchData]);
 
 
-  const sortNews = (item) => {
-    if(item === "ASC") {
-      setDataApi(dataApi.sort((a, b) => new Date(a.published_at) - new Date(b.published_at)))
-    } else {
-      setDataApi(dataApi.sort((a, b) => new Date(b.published_at) - new Date(a.published_at)))
-    }
-  }
-
   return (
 
     <div className="App">
@@ -74,7 +66,6 @@ function App() {
         language={language}
         setCategories={setCategories}
         setKeyword={setKeyword}
-        sortNews={sortNews}
         setSortOrder={setSortOrder}
       />
       {isLoading ? (
